@@ -188,7 +188,7 @@ void createArray(char s[] ,int row){
 	
 }
 //2.question
-int evaulate(char exp[]){
+void evaulate(char exp[]){
 	char operator [1000]; // a var for travel on operator
 	int operand[1000];   // b var for tarvel on operand
 	char digits[1][10]; 
@@ -201,10 +201,10 @@ int evaulate(char exp[]){
 	 int cnt=0;
 	for(i=0;i<strlen(exp);i++){	
 		if(exp[i]=='(' || exp[i]=='+' || exp[i]=='-' || exp[i]=='*' || exp[i]=='/' ){ // char operator control
-		    printf("%c",exp[i]);
+		    //printf("%c",exp[i]);
 			a++;
 			operator[a]=exp[i];
-			printf(" _%c_ ",operator[a]);
+			//printf(" _%c_ ",operator[a]);
 			flag=0;
 		}else if ( exp[i]>=48 && exp[i]<=57 ){
         digits[0][b]=exp[i];
@@ -227,7 +227,7 @@ int evaulate(char exp[]){
 			}
 			number[0][cnt]=z;
 			operand[c]=atoi(number[0]);
-			        printf("\n_%d_\n",operand[c]);
+			       // printf("\n_%d_\n",operand[c]);
 			
 			b=0;
 			cnt=0;
@@ -237,39 +237,32 @@ int evaulate(char exp[]){
 			switch(opr){
 				case '+':
 					result=operand[c-1]+operand[c];
-						printf("\n%d %d\n",operand[c-1],operand[c]);
+					//	printf("%d %d\n",operand[c-1],operand[c]);
 					break;
 				case '-':
 					result=operand[c-1]-operand[c];	
-						printf("\n%d %d\n",operand[c-1],operand[c]);
+					//	printf("\n%d %d\n",operand[c-1],operand[c]);
 					break;
 				case '*':
 					result=operand[c-1]*operand[c];
-						printf("\n%d %d\n",operand[c-1],operand[c]);
+					//	printf("\n%d %d\n",operand[c-1],operand[c]);
 					break;
 				case '/':
 					result=operand[c-1]/operand[c];
-						printf("\n%d %d\n",operand[c-1],operand[c]);
+					//	printf("\n%d %d\n",operand[c-1],operand[c]);
 				break;
 			}
 			a=a-2;
 			c--;
 			operand[c]=result;
-			        printf("#%d#",operand[c]);		
+			       // printf("%d",operand[c]);		
 		}		
 	}
-	int j,k;
-	printf("\n\n");
-	for(j=0;j<=b;j++){
-		printf("**%d **",operand[j]);	
-	}
-	printf("\n\n");
-	for(k=0;k<=a;k++){
-		printf("%c",operator[k]);
-	}
+	
+	
 	
 	if(a==0){
-		return operand[b];
+		printf("%d",operand[c]);
 	}
 		
 }
@@ -303,6 +296,7 @@ char str[1000];
             case 2:
                 printf("\nEnter the input string: ");
                 scanf("%s",&expression);
+                printf("\n");
                 evaulate(expression);
                 printf("\n\n");
                 break;
