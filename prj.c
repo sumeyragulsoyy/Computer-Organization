@@ -215,12 +215,17 @@ int evaulate(char exp[]){
 		}	
 		if(exp[i]==')'){
 			flag=0;
+			
 		}
 		if(flag==0 && b!=0){ // take number to operand array
 			c++;
+			char z='\0';
+			
 			for(s=0;s<cnt;s++){
 				number[0][s]=digits[0][s];
+				//printf("&& %d &&",digits[0][s]);
 			}
+			number[0][cnt]=z;
 			operand[c]=atoi(number[0]);
 			        printf("\n_%d_\n",operand[c]);
 			
