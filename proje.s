@@ -28,7 +28,7 @@ MAINLOOP:
 	li $v0,5			# print integer mode
 	syscall				#
 	addi $t1,$v0,-1		# 
-	sll,$t2,$t1,2		# 
+	sll $t2,$t1,2		# 
 	la $t0,SWITCH		# load address of string "SWITCH" in memory
 	add $t3,$t2,$t0		# 
 	lw $t4,0($t3)		# 
@@ -53,16 +53,14 @@ L3:
 	li $v0,8			# read string mode
 	la $a0,buffer		# load address of string "buffer" in memory
 	li $a1,100			# load immediate 100 to argument register 1 as char lenght
-	syscall
-	la $a0, newLine		# load address of string "newLine" in memory
-	li $v0, 4     		# print string mode
-	syscall				
-	la $a0, buffer     	# load address of string "buffer" in memory
-	li $v0, 4     		# print string mode
-	syscall
-
-
-
+	syscall				#
+	li $v0,4     		# print string mode
+	la $a0,newLine		# load address of string "newLine" in memory
+	syscall				#
+	li $v0,4     		# print string mode
+	la $a0,buffer     	# load address of string "buffer" in memory
+	syscall				#
+	
 	j MAINLOOP			# jump to MAINLOOP label
 L4:
 	li $v0,4			# print string mode
