@@ -15,49 +15,49 @@
 .text
 	.globl main
 main:
-	li,$v0,4 #print String
-	la,$a0,Welcome	#
-	syscall			#
+	li,$v0,4 		# print string mode
+	la,$a0,Welcome		# address of string in memory
+	syscall			# 
 MAINLOOP:
-	li $v0,4		#
-	la $a0,MainMenu	#
+	li $v0,4		# print string mode
+	la $a0,MainMenu		# load address of string "MainMenu" in memory
+	syscall			# 
+	li $v0,5		# print integer mode
 	syscall			#
-	li $v0,5		#read integer
-	syscall			#
-	addi $t1,$v0,-1	#
-	sll,$t2,$t1,2	#
-	la $t0,SWITCH	#load menu string
-	add $t3,$t2,$t0	#
-	lw $t4,0($t3)	#
-	jr $t4			#
+	addi $t1,$v0,-1		# 
+	sll,$t2,$t1,2		# 
+	la $t0,SWITCH		# load address of string "SWITCH" in memory
+	add $t3,$t2,$t0		# 
+	lw $t4,0($t3)		# 
+	jr $t4			# jump to the addres stored in register t4
 L1: 
-	li $v0,4		#
-	la $a0,Q1str1	#load Q3 string
+	li $v0,4		# print string mode
+	la $a0,Q1str1		# load address of string "Q1str1" in memory
 	syscall			#
-	j MAINLOOP		#
+	j MAINLOOP		# jump to MAINLOOP label
 L2: 
-	li $v0,4		#
-	la $a0,Q2str1	#load Q3 string
+	li $v0,4		# print string mode
+	la $a0,Q2str1		# load address of string "Q2str1" in memory
 	syscall			#
-	j MAINLOOP		#
+	j MAINLOOP		# jump to MAINLOOP label
 L3: 
-	li $v0,4		#
-	la $a0,Q3str1   #load Q3 string
-	syscall 		#print 
-	li $v0,4		#
-	la $a0,Q3str2	#
-	syscall			#
-	la $a0,Q3Array	#
-	li $t0, 0		#
-	j MAINLOOP		#
+	li $v0,4		# print string mode
+	la $a0,Q3str1   	# load address of string "Q3str1" in memory
+	syscall 		# 
+	li $v0,4		# load immediate to result value register
+	la $a0,Q3str2		# load address of string "Q3str2" in memory
+	syscall			# 
+	la $a0,Q3Array		# load address of string "Q3Array" in memory
+	li $a1,100		# load immediate to argument register 1
+	j MAINLOOP		# jump to MAINLOOP label
 L4:
-	li $v0,4		#
-	la $a0,END		#
-	syscall			#
-	j EXIT			#
+	li $v0,4		# print string mode
+	la $a0,END		# load address of string "END" in memory
+	syscall			# 
+	j EXIT			# jump to EXIT label
 
 
 EXIT:
-	li $v0,10		# 
+	li $v0,10		# exit mode
 	syscall			#
 	   
