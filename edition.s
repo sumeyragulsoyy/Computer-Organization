@@ -146,6 +146,9 @@ H_DELETE:
 			#jr $ra              # geldiği yere geri dödürmek gerek
 
 H_PRINT:
+			li,$v0,4 #print String	
+			la,$a0,Print	
+			syscall
 			j L1
 RETURNMAINMENU:
 			j MAINLOOP
