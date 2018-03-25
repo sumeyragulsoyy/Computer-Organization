@@ -12,6 +12,8 @@
 	Welcome:        .asciiz "Welcome to Project \n"
 	MainMenu:       .asciiz "\n Main Menu:\n  1.Build a min-heap\n  2.Evaulate an expression\n  3.Construct a 2D array\n  4.Exit\n  Please Select an Option: "
 	Q1:             .asciiz "1. Insert an item to the heap\n 2. Delete an item from the heap\n 3. Print the heap\n 4. Return back\n  Please select an option: "
+	Insert: .asciiz "Please enter a value: "
+	Print: .asciiz "print heap"
 	Q2:             .asciiz "String Evaulate"
 	Q3:             .asciiz "Array Create"
     Q3str2:		    .asciiz "Enter the input string:"
@@ -51,7 +53,7 @@ L1: li $v0,4    #print options of Q1
 H_INSERT:  li,$v0,4 #print String
 	       la,$a0,Insert
 	       syscall
-		   j L1
+		j L1
 #H_INSERT:  
            #la $s0,heap             #s0=&heap
 		   #lw $t3,0($s0)           #heap[0]=heapsize
@@ -145,10 +147,9 @@ H_DELETE:
 			#addi $sp,$sp,4
 			#jr $ra              # geldiği yere geri dödürmek gerek
 
-H_PRINT:
-			li,$v0,4 #print String	
-			la,$a0,Print	
-			syscall
+H_PRINT:   li,$v0,4 #print String
+	   la,$a0,Print
+	   syscall
 			j L1
 RETURNMAINMENU:
 			j MAINLOOP
