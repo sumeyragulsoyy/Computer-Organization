@@ -78,7 +78,8 @@ H_INSERT:  li,$v0,4 #print String
 		  # add $t3,$t9,$0
 		  # j CONTROL
 
-#H_DELETE:  la $s0,heap  #s0=&heap
+H_DELETE: J L1
+# la $s0,heap  #s0=&heap
 		  # lw $t0,0($s0)  #t0=heap[0]=heapsize
 		  # addi $t1,$t1,1  #t1 always 1
 		  # slt $t2,$t0,$t1
